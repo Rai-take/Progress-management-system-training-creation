@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
+            $table->id('task_id');
             $table->string('title');
-            $table->text('body');
+            $table->text('content');
+            $table->date('start_date');
+            $table->date('due_date');
+            //$table->('upload'); //ファイルURL？
+            //$table->('');
             $table->timestamps();
         });
     }
