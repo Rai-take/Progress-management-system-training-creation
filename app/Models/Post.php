@@ -10,6 +10,6 @@ class Post extends Model
     use HasFactory;
     //$fillableはホワイトリスト、$guardedはブロックリスト
     protected $guarded = [
-        'id',
+        'task_id',
     ];
 }

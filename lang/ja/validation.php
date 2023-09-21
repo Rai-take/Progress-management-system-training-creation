@@ -183,7 +183,7 @@ return [
         'birthday' => '誕生日',
         'body' => '本文',
         'city' => '市',
-        'content' => 'コンテンツ',
+        'content' => '内容',
         'country' => '国',
         'created_at' => '作成日',
         'creator' => '作成者',
@@ -247,6 +247,10 @@ return [
         'updated_at' => '更新日',
         'username' => 'ユーザー名',
         'year' => '年',
+        //追加
+        'assignee' => '担当者',
+        'start_date' => '開始日',
+        'finish_date' => '完了期日',
     ],
 
 ];

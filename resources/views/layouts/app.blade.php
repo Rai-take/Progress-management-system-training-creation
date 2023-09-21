@@ -32,5 +32,7 @@
                 {{ $slot }}
             </main>
         </div>
+        {{-- Tailwind CSSテンプレ(CDN) Datepcker 出典 https://flowbite.com/docs/plugins/datepicker/ --}}
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/datepicker.min.js"></script> --}}
     </body>
 </html>

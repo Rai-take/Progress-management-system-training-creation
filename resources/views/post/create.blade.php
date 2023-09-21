@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            フォーム
+            登録フォーム
         </h2>
     </x-slot>
 
@@ -45,29 +45,56 @@
               {{-- <textarea name="upload" class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea> --}}
               <div class="sm:col-span-2">
                 <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">タイトル</label>
-                <input name="title" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+                <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                <input name="title" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" value="{{old('title')}}">
               </div>
         
               <div class="sm:col-span-2">
                 <label for="content" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">内容</label>
-                <textarea name="content" class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
+                <x-input-error :messages="$errors->get('content')" class="mt-2" />
+                <textarea name="content" class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">{{old('content')}}</textarea>
               </div>
         
               <div class="sm:col-span-2">
                 <label for="assignee" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">担当者</label>
-                <input name="assignee" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+                <x-input-error :messages="$errors->get('assignee')" class="mt-2" />
+                <input name="assignee" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" value="{{old('assignee')}}">
               </div>
         
-              <div class="sm:col-span-2">
-                <label for="start-date" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">開始日</label>
-                <input name="start-date" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+              <div class="sm:col-span-1">
+                <label for="start_date" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">開始日</label>
+                  <x-input-error :messages="$errors->get('start_date')" class="mt-2" />
+                  <input type="date" name="start_date" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" value="{{old('start_date')}}">
               </div>
-        
-              <div class="sm:col-span-2">
-                <label for="due-date" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">完了期日</label>
-                <input name="due-date" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+              <span></span>
+              <div class="sm:col-span-1">
+                <label for="finish_date" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">完了期日</label>
+                <x-input-error :messages="$errors->get('finish_date')" class="mt-2" />
+                <input type="date" name="finish_date" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" value="{{old('start_date')}}">
               </div>
-        
+
+              {{-- !未使用! 日付選択 Tailwind CSSテンプレ --}}
+              {{-- <div date-rangepicker class="flex items-center">
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                       <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                      </svg>
+                  </div>
+                  <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+                </div>
+                <span class="mx-4 text-gray-500">to</span>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                       <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                      </svg>
+                  </div>
+                  <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+              </div>
+              </div> --}}
+              {{-- 日付選択テンプレここまで --}}
+
               <div class="sm:col-span-2">
                 <label for="upload" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像、動画アップロード(アップロード機能未実装のためエラーになります)</label>
                 {{--テンプレ出典 sailboatUI https://sailboatui.com/docs/forms/file-input/ --}}           

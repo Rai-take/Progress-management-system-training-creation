@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->date('start_date');
-            $table->date('due_date');
+            $table->date('finish_date');
             //$table->('upload'); //ファイルURL？
             //$table->('');
             $table->timestamps();

@@ -13,18 +13,26 @@ class PostController extends Controller
     }
 
     public function store(Request $request) {
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'content' => 'max:2000',
+            'assignee' => 'required|max:20',
+            'start_date' => 'required|date',
+            'finish_date' => 'required|date|after:start_date',
+        ]);
+
+        $post = Post::create($validated);
+        return back();
 
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
             'assignee' => $request->assignee,
             'start_date' => $request->start_date,
-            'due_date' => $request->due_date,
+            'finish_date' => $request->finish_date,
             //'upload' => $request->upload,
         ]);
-        
-        //$request->session()->flash('message', '保存しました') //下記は簡易表記
-        $request->with('message', '保存しました');
-        return back();
+        return back()->with('message', '保存しました');
+        //$request->session()->flash('message', '保存しました') //上記は簡易表記
     }
 }
