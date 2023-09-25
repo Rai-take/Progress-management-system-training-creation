@@ -21,18 +21,16 @@ class PostController extends Controller
             'finish_date' => 'required|date|after:start_date',
         ]);
 
+        $validated['user_id'] = auth()->id();
+        
         $post = Post::create($validated);
-        return back();
 
-        $post = Post::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'assignee' => $request->assignee,
-            'start_date' => $request->start_date,
-            'finish_date' => $request->finish_date,
-            //'upload' => $request->upload,
-        ]);
-        return back()->with('message', '保存しました');
+        return $this->index()->with('message', '保存しました');
         //$request->session()->flash('message', '保存しました') //上記は簡易表記
+    }
+
+    public function index() {
+        $posts = Post::all();
+        return view('post.index', compact('posts'));
     }
 }

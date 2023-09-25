@@ -9,7 +9,7 @@
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
             <span class="ml-3 text-xl">
-                <a class="font-semibold text-xl text-gray-800 leading-tight" href="{{ route('dashboard') }}">
+                <a class="font-semibold text-xl text-gray-800 leading-tight" href="{{ route('index') }}">
                     進捗管理システム
                 </a>
             </span>
