@@ -15,6 +15,7 @@ return new class extends Migration
             //$table->id('task_id');
             $table->string('title');
             $table->text('content');
+            $table->string('assignee');
             $table->date('start_date');
             $table->date('finish_date');
             //$table->('upload'); //ファイルURL？

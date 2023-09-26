@@ -27,15 +27,21 @@
         @foreach($posts as $post)
         <div class="mt-4 p-8 bg-white w-full rounded-2xl">
             <h1 class="p-4 text-lg font-semibold">
-                {{$post->title}}
+                {{$post->title}}<br>
+                担当者：{{$post->assignee}}
+                開始日：{{$post->start_date}}
+                完了期日：{{$post->finish_date}}
             </h1>
             <hr class="w-full">
             <p class="mt-4 p-4">
                 {{$post->content}}
             </p>
-            <div class="p-4 text-sm font-semibold">
+            <div class="p-4 text-sm">
                 <p>
-                    {{$post->created_at}}
+                    タスク作成日：{{$post->created_at}}
+                </p>
+                <p>
+                    タスク作成者：{{$post->user->name??'不明'}}
                 </p>
             </div>
         </div>

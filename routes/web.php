@@ -13,6 +13,8 @@ Route::post('post', [PostController::class, 'store'])->name('post.store');
 
 Route::get('post', [PostController::class, 'index'])->name('index');
 
+Route::get('/', [PostController::class, 'index'])->name('index')->middleware('auth'); //未ログイン状態でログインページにリダイレクト
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +26,9 @@ Route::get('post', [PostController::class, 'index'])->name('index');
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

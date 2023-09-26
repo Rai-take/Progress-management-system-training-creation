@@ -9,9 +9,12 @@ class Post extends Model
 {
     use HasFactory;
     //$fillableはホワイトリスト、$guardedはブロックリスト
-    protected $guarded = [
+    protected $fillable = [
         'title',
         'content',
+        'assignee',
+        'start_date',
+        'finish_date',
         'user_id'
     ];
 
