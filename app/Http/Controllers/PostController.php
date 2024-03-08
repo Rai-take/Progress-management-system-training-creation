@@ -34,7 +34,8 @@ class PostController extends Controller
         
         $post = Post::create($validated);
 
-        return back()->with('message', '保存しました');
+        // return back()->with('message', '保存しました');
+        return response()->json('message' => '保存しました');
         //$request->session()->flash('message', '保存しました');
         //return $this->index();
         //$this->index(); //上記は簡易表記
